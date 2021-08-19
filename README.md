@@ -26,3 +26,5 @@
 
 ## En el navegador:
 >    localhost/cursophp
+
+## Recursos
