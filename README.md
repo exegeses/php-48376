@@ -29,5 +29,5 @@
 
 ## Recursos
 
-    [Manual Oficial de PHP] <https://www.php.net>
+    Manual Oficial de PHP <https://www.php.net>
     
