@@ -5,7 +5,11 @@
 
     function listarMarcas()
     {
-
+        $link = conectar();
+        $sql = "SELECT idMarca, mkNombre
+                    FROM marcas";
+        $marcas = mysqli_query( $link, $sql );
+        return $marcas;
     }
     function verMarcaPorID()
     {}
