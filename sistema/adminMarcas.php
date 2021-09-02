@@ -20,7 +20,7 @@
                     <th>ID</th>
                     <th>Marca</th>
                     <th colspan="2">
-                        <a href="" class="btn btn-outline-secondary">
+                        <a href="formAgregarMarca.php" class="btn btn-outline-secondary">
                             Agregar
                         </a>
                     </th>
