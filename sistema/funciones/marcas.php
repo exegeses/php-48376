@@ -8,7 +8,8 @@
         $link = conectar();
         $sql = "SELECT idMarca, mkNombre
                     FROM marcas";
-        $marcas = mysqli_query( $link, $sql );
+        $marcas = mysqli_query( $link, $sql )
+                        or die( mysqli_error($link) );
         return $marcas;
     }
     function verMarcaPorID()
@@ -21,7 +22,9 @@
                         ( mkNombre )
                     VALUE
                         ( '".$mkNombre."' )";
-        $resultado = mysqli_query( $link, $sql );
+        $resultado = mysqli_query( $link, $sql )
+                            or die( mysqli_error($link) );
+
         return $resultado;
     }
     function modificarMarca()
