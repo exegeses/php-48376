@@ -50,5 +50,22 @@
                         or die(mysqli_error($link));
         return $resultado;
     }
+
+    /**
+     * función para chequear si hay
+     * productos asignados a una marca
+     */
+    function productoPorMarca()
+    {
+       $idMarca = $_GET['idMarca'];
+       $link = conectar();
+       $sql = "SELECT COUNT(idProducto) AS cantidad 
+                    FROM productos 
+                    WHERE idMarca = ".$idMarca;
+       $resultado = mysqli_query( $link, $sql )
+                        or die(mysqli_error($link));
+       $datos = mysqli_fetch_assoc($resultado);
+       return $datos['cantidad'];
+    }
     function eliminarMarca()
     {}
