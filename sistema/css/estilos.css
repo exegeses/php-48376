@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap');
 html {
     position: relative;
     min-height: 100%;
 }
 body {
-    margin-bottom: 60px; /* Margin bottom by footer height */
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 110px; /* Margin bottom by footer height */
 }
 
 /*
@@ -29,6 +31,14 @@ body {
 main{
     margin-top: 30px;
 }
+    h1{
+        border-left: 10px solid #ddd;
+        padding-left: 20px;
+    }
+
+    th{
+        font-weight: 600;
+    }
 
 .img50{
     width: 50%;
@@ -41,8 +51,8 @@ main{
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px; /* Set the fixed height of the footer here */
-    line-height: 60px; /* Vertically center the text there */
+    height: 100px; /* Set the fixed height of the footer here */
+    line-height: 100px; /* Vertically center the text there */
     background-color: rgba(0, 0, 0, .85);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
