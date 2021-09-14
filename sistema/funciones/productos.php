@@ -27,13 +27,37 @@
         return $productos;
     }
     function verProductoPorID()
-    {}
+    {
+        $idProducto = $_GET['idProducto'];
+        $link = conectar();
+        $sql = 'SELECT 
+                        idProducto, prdNombre, prdPrecio, 
+                        productos.idMarca, mkNombre, 
+                        productos.idCategoria, catNombre,
+                        prdPresentacion, prdStock, prdImagen 
+                    FROM productos 
+                        join marcas 
+                            on productos.idMarca = marcas.idMarca 
+                        join categorias 
+                            on productos.idCategoria = categorias.idCategoria
+                        WHERE idProducto = '.$idProducto;
+        $resultado = mysqli_query( $link, $sql )
+                            or die( mysqli_error( $link ) );
+        $producto = mysqli_fetch_assoc( $resultado );
+        return $producto;
+    }
 
     function subirImagen()
     {
-        //si no enviaron archivo
+        //si no enviaron archivo en agregar
         $prdImagen = 'noDisponible.jpg';
-        //si enviaron archivo
+
+        //si ya tiene imagen en modificar
+        if( isset($_POST['imgActual']) ){
+            $prdImagen = $_POST['imgActual'];
+        }
+
+        //si enviaron archivo en ambos
         if( $_FILES['prdImagen']['error'] == 0 ){
             //ruta y nombre temporal
             $tmp = $_FILES['prdImagen']['tmp_name'];
@@ -94,6 +118,17 @@
         return $resultado;
     }
     function modificarProducto()
-    {}
+    {
+        //capturamos datos enviados por el form
+        $prdNombre = $_POST['prdNombre'];
+        $prdPrecio = $_POST['prdPrecio'];
+        $idMarca = $_POST['idMarca'];
+        $idCategoria = $_POST['idCategoria'];
+        $prdPresentacion = $_POST['prdPresentacion'];
+        $prdStock = $_POST['prdStock'];
+        $prdImagen = subirImagen();
+        $idProducto = $_POST['idProducto'];
+
+    }
     function eliminarProducto()
     {}
