@@ -17,7 +17,7 @@
                 </div>
                 <div class="col text-danger">
                     <h2><?= $producto['prdNombre'] ?></h2>
-                    <?= $producto['catNombre'] ?> | <?= $producto['mkNombre'] ?>
+                    <?= $producto['mkNombre'] ?> | <?= $producto['catNombre'] ?>
                     <br>
                     $<?= $producto['prdPrecio'] ?>
                     <br>
@@ -40,11 +40,11 @@
         </article>
 
         <script>
-        /*    Swal.fire(
+            Swal.fire(
                 'Advertencia',
                 'Si pulsa el botón "Confirmar baja", se eliminará el producto.',
                 'warning'
-            )*/
+            )
         </script>
 
     </main>
