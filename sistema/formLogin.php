@@ -1,5 +1,5 @@
 <?php
-    //require 'config/config.php';
+    require 'config/config.php';
     include 'includes/header.html';
     include 'includes/nav.php';
 ?>
@@ -24,6 +24,17 @@
             </form>
         </div>
 
+        <?php
+            ## si se loguea mal
+            if( isset($_GET['error']) ){
+        ?>
+            <div class="alert alert-danger col-8 mx-auto">
+                Nombre de usuario y/o contraseña incorrectos.
+            </div>
+        <?php
+            }
+        ?>
+                
     </main>
 
 <?php  include 'includes/footer.php';  ?>
