@@ -21,7 +21,7 @@
             <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item bg-dark" href="logout.php">Salir de sistema</a>
                 <a class="dropdown-item bg-dark" href="">Modificar Perfil</a>
-                <a class="dropdown-item bg-dark" href="">Cambiar contraseña</a>
+                <a class="dropdown-item bg-dark" href="formModificarClave.php">Cambiar contraseña</a>
             </div>
 <?php
     }
