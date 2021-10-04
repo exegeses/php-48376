@@ -38,9 +38,11 @@
     }
     function logout()
     {
+        $usuario = $_SESSION['usuNombre'].' '.$_SESSION['usuApellido'];
         session_unset();
         session_destroy();
         header('refresh:3;url=formLogin.php');
+        return $usuario;
     }
     /**
      * función para chequear si el usuario está logueado

@@ -1,5 +1,5 @@
 <?php
-    $numero = 147;
+    $numero = 137;
     $texto = 'cadena de caractéres';
     const NOMBRE = 'Rick';
     /* const APELLIDO = 'Sánchez'; */
