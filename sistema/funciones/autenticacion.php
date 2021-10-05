@@ -5,7 +5,7 @@
         $usuEmail = $_POST['usuEmail'];
         $usuPass  = $_POST['usuPass'];
         $link = conectar();
-        $sql = "SELECT usuNombre, usuApellido, usuPass
+        $sql = "SELECT usuNombre, usuApellido, usuPass, idUsuario
                     FROM usuarios 
                     WHERE usuEmail = '".$usuEmail."'";
         $resultado = mysqli_query( $link, $sql )
@@ -28,6 +28,8 @@
             /* acá ya sabemos que se logueó bien usuario y clave */
             ######### RUTINA DE AUTENTICACIÓN
             $_SESSION['login'] = 1;
+            #obtenemos y almacenamos id de usuario
+            $_SESSION['idUsuario'] = $usuario['idUsuario'];
             #obtenemos y almacenamos nombre y apellido
             $_SESSION['usuNombre'] = $usuario['usuNombre'];
             $_SESSION['usuApellido'] = $usuario['usuApellido'];

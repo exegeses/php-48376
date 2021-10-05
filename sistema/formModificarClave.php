@@ -1,5 +1,7 @@
 <?php
-    //require 'config/config.php';
+    require 'config/config.php';
+    require 'funciones/autenticacion.php';
+    autenticar();
     include 'includes/header.html';
     include 'includes/nav.php';
 ?>
@@ -15,9 +17,15 @@
                     <label for="usuPass">Contraseña actual</label>
                     <input type="password" name="usuPass"
                            class='form-control' id="usuPass" required>
-                    <div class="invalid-feedback">
-                        Debe completar el campo Contraseña actual
+<?php
+            if( isset($_GET['Err']) ){
+?>
+                    <div class="text-danger">
+                        La contraseña actual es incorrecta.
                     </div>
+<?php
+            }
+?>
                 </div>
                 <div class='form-group mb-2'>
                     <label for="newPass">Nueva contraseña</label>
@@ -31,12 +39,18 @@
                     <label for="newPass2">Repita contraseña</label>
                     <input type="password" name="newPass2"
                            class='form-control' id="newPass2" required>
-                    <div class="invalid-feedback" id="repite">
-                        Debe completar el campo Repita contraseña con un valor igual a Nueva contraseña
-                    </div>
+<?php
+            if( isset($_GET['Err2']) ){
+?>
+                <div class="text-danger">
+                    Las nuevas credenciales no coinciden.
+                </div>
+<?php
+            }
+?>
                 </div>
 
-                <button class='btn btn-dark my-3 px-4'>Agregar usuario</button>
+                <button class='btn btn-dark my-3 px-4'>Modificar contraseña</button>
                 <a href="adminUsuarios.php" class='btn btn-outline-secondary'>
                     Volver a panel de usuarios
                 </a>

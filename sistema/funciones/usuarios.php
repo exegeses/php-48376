@@ -80,6 +80,56 @@
                         or die(mysqli_error($link));
         return $resultado;
     }
+    /**
+     * función para quequear coincidencia clave nueva
+    */
+    function repiteClave()
+    {
+        //clave nueva
+        $newPass = $_POST['newPass'];
+        $newPass2 = $_POST['newPass2'];
+        if( $newPass != $newPass2 ){
+            //si no coinciden, informar en formulario
+            header('location: formModificarClave.php?Err2=1');
+            return false;
+        }
+        return true;
+    }
+
+    function modificarClave()
+    {
+        //clave actual
+        $usuPass = $_POST['usuPass'];
+        /** obtenemos clave en bdd */
+        $link = conectar();
+        $sql  = "SELECT usuPass 
+                    FROM usuarios
+                    WHERE idUsuario = ".$_SESSION['idUsuario'];
+        $resultado = mysqli_query( $link, $sql )
+                                or die(mysqli_error( $link ));
+        $claveHasheada = mysqli_fetch_assoc($resultado);
+        if( !password_verify( $usuPass, $claveHasheada['usuPass'] ) ){
+            // si no puso clave correcta.
+            //generamos una redirección para informar clave mal
+            header('location: formModificarClave.php?Err=1');
+        }
+        else{
+            //chequear repita contraseña y que coincidan
+            if ( repiteClave() ){
+                //modificamos contraseña
+                $newPass = $_POST['newPass'];
+                $pHash = password_hash( $newPass, PASSWORD_DEFAULT );
+                $sql = "UPDATE usuarios
+                            SET usuPass = '".$pHash."'
+                            WHERE idUsuario =".$_SESSION['idUsuario'];
+                mysqli_query( $link, $sql )
+                                or die(mysqli_error( $link ));
+                //saber si modificó la clave o puso la misma
+                $filasAfectadas = mysqli_affected_rows( $link );
+                return $filasAfectadas;
+            }
+        }
+    }
 
     function eliminarUsuario()
     {
